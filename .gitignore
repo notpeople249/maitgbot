@@ -1,5 +1,8 @@
 src/static
 .idea
 .code
+.git
+.env
+.session
 venv
 __pycache__

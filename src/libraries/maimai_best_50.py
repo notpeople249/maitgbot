@@ -1,4 +1,4 @@
-import asyncio
+
 import os
 import math
 from typing import Optional, Dict, List, Tuple
@@ -198,7 +198,7 @@ class DrawBest(object):
         itemW = 131
         itemH = 88
         Color = [(69, 193, 36), (255, 186, 1), (255, 90, 102), (134, 49, 200), (217, 197, 233)]
-        levelTriagle = [(itemW, 0), (itemW - 27, 0), (itemW, 27)]
+        levelTriangle = [(itemW, 0), (itemW - 27, 0), (itemW, 27)]
         rankPic = 'D C B BB BBB A AA AAA S Sp SS SSp SSS SSSp'.split(' ')
         comboPic = ' FC FCp AP APp'.split(' ')
         imgDraw = ImageDraw.Draw(img)
@@ -217,7 +217,7 @@ class DrawBest(object):
             temp = temp.point(lambda p: int(p * 0.72))
 
             tempDraw = ImageDraw.Draw(temp)
-            tempDraw.polygon(levelTriagle, Color[chartInfo.diff])
+            tempDraw.polygon(levelTriangle, Color[chartInfo.diff])
             font = ImageFont.truetype(titleFontName, 16, encoding='utf-8')
             title = chartInfo.title
             if self._coloumWidth(title) > 15:
@@ -264,7 +264,7 @@ class DrawBest(object):
             temp = temp.point(lambda p: int(p * 0.72))
 
             tempDraw = ImageDraw.Draw(temp)
-            tempDraw.polygon(levelTriagle, Color[chartInfo.diff])
+            tempDraw.polygon(levelTriangle, Color[chartInfo.diff])
             font = ImageFont.truetype(titleFontName, 14, encoding='utf-8')
             title = chartInfo.title
             if self._coloumWidth(title) > 13:
@@ -350,8 +350,6 @@ class DrawBest(object):
         self.img.paste(dxImg, (988, 65), mask=dxImg.split()[3])
         sdImg = Image.open(self.pic_dir + 'UI_RSL_MBase_Parts_02.png').convert('RGBA')
         self.img.paste(sdImg, (865, 65), mask=sdImg.split()[3])
-
-        # self.img.show()
 
     def getDir(self):
         return self.img

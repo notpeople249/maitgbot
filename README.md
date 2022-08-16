@@ -1,20 +1,57 @@
-# mai bot 使用指南
+# mai tg bot 使用指南
 
-此 README 提供了最低程度的 mai bot 教程与支持。
+此bot由 Diving-Fish/mai-bot 的源码修改而成，使用了python的pyrogram与Telegram的服务器交流。
+
+此 README 提供了最低程度的 maitgbot 教程与支持。
 
 **建议您至少拥有一定的编程基础之后再尝试使用本工具。**
 
-## Step 1. 安装 Python
+**此源码编写于Windows 11， Python 3 版本 > 3.9，并测试于 Ubuntu 20.02 与 Debian 10。如有遇到其它问题，到Issue里提。**
+
+## Step 1. 安装 Python 3
 
 请自行前往 https://www.python.org/ 下载 Python 3 版本（> 3.7）并将其添加到环境变量（在安装过程中勾选 Add Python to system PATH）。对大多数用户来说，您应该下载 Windows installer (64-bit)。
 
-在 Linux 系统上，可能需要其他方法安装 Python 3，请自行查找。
+在 Linux 系统上，需要依照其他安装步骤，请自行查找。
 
-## Step 2. 运行项目
+## Step 2. 安装 Python 3 Pip
 
-建议使用 git 对此项目进行版本管理。您也可以直接在本界面下载代码的压缩包进行运行。
+Python 3 PIP 为 python 安装依赖包的应用，属于必要程序。以下方法为 Windows 版教程， **Linux 下执行 `apt-get install python3-pip` 即可**。
 
-在运行代码之前，您需要从[此链接](https://www.diving-fish.com/maibot/static.zip)下载资源文件并解压到`src`文件夹中。
+首先打开 cmd.exe ，然后 选择一个目录后下载 get-pip.py 的文件：
+```
+curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py
+```
+
+过后在同一个目录下执行以下指令
+```
+python get-pip.py
+```
+
+最后使用此指令确保pip能显示当前已安装的版本
+```
+pip --version
+```
+
+## Step 3. 获取机器人的环境设置内容
+
+因为 Telegram 的限制，因此使用 Pyrogram 登录机器人需要准备三样东西，都必须得有 Telegram 账号才可获得。三样东西分别为 Api ID， Api Hash，和 Bot Token。
+
+打开 https://my.telegram.org/auth 网站，然后登录个人 Telegram 账号。然后选择 `API development tools` ，之后在`App title:`输入 `MaiMai DF bot` ，`Short name:`输入 `MaiTGBot` 和`URL:`输入 此项目的链接。（或其他任何内容皆可，但尽量真实避免导致封禁你的个人账号）
+至于`Platform：`可以随选，之后点击 `Create application` 即可获取 `Api ID` 和 `Api Hash` 。
+
+接下来打开 Telegram ，寻找 [@BotFather](https://t.me/BotFather) 创建一个机器人（发送`/newbot`->设置bot的名字->设置bot的用户名->机器人创建完毕），然后就能获得bot的token了。接下来就是准备运行项目。
+
+## Step 3. 运行项目
+
+您可以直接在本界面下载代码的压缩包进行运行。也可以安装完成 Git 后使用 cmd.exe 执行指令然后下载代码到指定的文件夹。
+```
+git clone https://github.com/notpeople249/maitgbot '下载保存的路径'
+```
+
+**在运行代码之前，您需要从 [此链接](https://www.diving-fish.com/maibot/static.zip) 下载资源文件并解压到`src`文件夹中。
+在运行代码之前，您需要从 [此链接](https://www.diving-fish.com/maibot/static.zip) 下载资源文件并解压到`src`文件夹中。
+在运行代码之前，您需要从 [此链接](https://www.diving-fish.com/maibot/static.zip) 下载资源文件并解压到`src`文件夹中。**
 
 > 资源文件仅供学习交流使用，请自觉在下载 24 小时内删除资源文件。
 
@@ -32,56 +69,29 @@ python --version
 ```
 pip install -r requirements.txt
 ```
-安装依赖完成后，运行
+安装依赖完成后，打开`.env`文件并在BTOKEN里填写入你的机器人的token。（如果没有请自行寻找创建机器人的方法并新建一个）例子（以下的例子仅供参考，不可使用）：
 ```
-python bot.py
+API_ID = '35846523'
+API_HASH = '65s1vrd68vs4r5v1e89dv4s6d4v5ef14b520tbf'
+BTOKEN = '123456789:D54FGA556RFG4AF-46WE5FVADS!4FG98'
+```
+最后运行即可。（Linux 下把 `python` 更换为 `python3` ）
+```
+python main.py
 ```
 运行项目。如果输出如下所示的内容，代表运行成功：
 ```
-08-02 11:26:48 [INFO] nonebot | NoneBot is initializing...
-08-02 11:26:48 [INFO] nonebot | Current Env: prod
-08-02 11:26:49 [INFO] nonebot | Succeeded to import "maimaidx"
-08-02 11:26:49 [INFO] nonebot | Succeeded to import "public"
-08-02 11:26:49 [INFO] nonebot | Running NoneBot...
-08-02 11:26:49 [INFO] uvicorn | Started server process [5268]
-08-02 11:26:49 [INFO] uvicorn | Waiting for application startup.
-08-02 11:26:49 [INFO] uvicorn | Application startup complete.
-08-02 11:26:49 [INFO] uvicorn | Uvicorn running on http://127.0.0.1:10219 (Press CTRL+C to quit)
+机器人已启动!
+时间于：（当前时间） 
 ```
-**运行成功后请勿关闭此窗口，后续需要与 CQ-HTTP 连接。**
+**运行成功后请勿关闭此窗口。**
 
-## Step 3. 连接 CQ-HTTP
-
-前往 https://github.com/Mrs4s/go-cqhttp > Releases，下载适合自己操作系统的可执行文件。
-go-cqhttp 在初次启动时会询问代理方式，选择反向 websocket 代理即可。
-
-之后用任何文本编辑器打开`config.yml`文件，设置反向 ws 地址、上报方式：
-```yml
-message:
-  post-format: array
-  
-servers:
-  - ws-reverse:
-      universal: ws://127.0.0.1:10219/cqhttp/ws
-```
-然后设置您的 QQ 号和密码。您也可以不设置密码，选择扫码登陆的方式。
-
-登陆成功后，后台应该会发送一条类似的信息：
-```
-08-02 11:50:51 [INFO] nonebot | WebSocket Connection from CQHTTP Bot 114514 Accepted!
-```
-至此，您可以和对应的 QQ 号聊天并使用 mai bot 的所有功能了。
 
 ## FAQ
 
-不是 Windows 系统该怎么办？
-> 请自行查阅其他系统上的 Python 安装方式。cqhttp提供了其他系统的可执行文件，您也可以自行配置 golang module 环境进行编译。
+想要关闭电脑 / 程序但保持项目运行，可以吗？
+>建议请把项目运行于服务器上， Windows 或 Linux（Ubuntu/Debian/CentOS/AlmaLinux/Rocky Linux/等等等）皆可，然后长期运行。 <br> Linux 上建议搭配 screen 或 tmux 等类似的程序一起使用。
 
-配置 nonebot 或 cq-http 过程中出错？
-> 请查阅 https://github.com/nonebot/nonebot2 以及 https://github.com/Mrs4s/go-cqhttp 中的文档。
-
-部分消息发不出来？
-> 被风控了。解决方式：换号或者让这个号保持登陆状态和一定的聊天频率，持续一段时间。
 
 ## 说明
 
@@ -89,14 +99,16 @@ servers:
 
 命令 | 功能
 --- | ---
-help | 查看帮助文档
-今日舞萌 | 查看今天的舞萌运势
-XXXmaimaiXXX什么 | 随机一首歌
+/help | 查看帮助文档
+/today_mai | 查看今天的舞萌运势
+...maimai...什么 | 随机一首歌
 随个[dx/标准][绿黄红紫白]<难度> | 随机一首指定条件的乐曲
 查歌<乐曲标题的一部分> | 查询符合条件的乐曲
 [绿黄红紫白]id<歌曲编号> | 查询乐曲信息或谱面信息
-定数查歌 <定数> <br> 定数查歌 <定数下限> <定数上限> |  查询定数对应的乐曲
-分数线 <难度+歌曲id> <分数线> | 展示歌曲的分数线
+/inner_level <定数> <br> /inner_level <定数下限> <定数上限> |  查询定数对应的乐曲
+/pointer <难度+歌曲id> <分数线> | 展示歌曲的分数线
+/b40 (查询账号的用户名) | 根据查分器数据生成你的Best 40数据图
+/b50 (查询账号的用户名) | 根据查分器数据生成你的Best 50数据图
 
 ## License
 

@@ -28,7 +28,7 @@ async def start(Client, Message):
     user = Message.from_user
     me = await Client.get_users("me")
     text = "你好 " + user.first_name + " 欢迎使用 " + me.first_name + '\n请发送 /help 以获取我的完整指令集\n使用 b40/b50 功能前请先前往<a href="https://www.diving-fish.com/maimaidx/prober/">舞萌DX查分器</a>绑定账号'
-    await Message.reply(text, parse_mode='HTML', disable_web_page_preview=True)
+    await Message.reply(text, disable_web_page_preview=True)
 
 
 @Client.on_message(filters.command('version')
@@ -36,7 +36,7 @@ async def start(Client, Message):
 async def version(Client, Message):
     Version_Code = 'v1.2'
     text = 'MaiMai DX - Diving Fish Checker Bot\n' + Version_Code + '\n<a href="https://github.com/Diving-Fish/mai-bot">Original QQ bot Repo</a>\n<a href="https://github.com/notpeople249/maitgbot">Telegram bot Repo</a>'
-    await Message.reply(text, quote=True, parse_mode='HTML', disable_web_page_preview=True)
+    await Message.reply(text, quote=True, disable_web_page_preview=True)
 
 
 async def set_command(Client):
@@ -53,4 +53,4 @@ async def set_command(Client):
                     & filters.text)
 async def author(Client, Message):
     text = '如有发现错误，请联系开发者进行校对与修改\n<a href="https://t.me/xiaopoqun">@xiaopoqun</a>'
-    await Message.reply(text, quote=True, parse_mode='HTML', disable_web_page_preview=True)
+    await Message.reply(text, quote=True, disable_web_page_preview=True)

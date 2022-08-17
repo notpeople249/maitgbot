@@ -42,7 +42,7 @@ pip --version
 
 接下来打开 Telegram ，寻找 [@BotFather](https://t.me/BotFather) 创建一个机器人（发送`/newbot`->设置bot的名字->设置bot的用户名->机器人创建完毕），然后就能获得bot的token了。接下来就是准备运行项目。
 
-## Step 3. 运行项目
+## Step 4. 运行项目
 
 您可以直接在本界面下载代码的压缩包进行运行。也可以安装完成 Git 后使用 cmd.exe 执行指令然后下载代码到指定的文件夹。
 ```
@@ -69,7 +69,8 @@ python --version
 ```
 pip install -r requirements.txt
 ```
-安装依赖完成后，打开`.env`文件并在BTOKEN里填写入你的机器人的token。（如果没有请自行寻找创建机器人的方法并新建一个）例子（以下的例子仅供参考，不可使用）：
+安装依赖完成后，打开`.env`文件填写上一步骤中获取的 `Api ID` ， `Api Hash` 和 `Bot Token` 。（如果没有请查看回上一步骤获取）
+例子（仅供参考，无法使用）：
 ```
 API_ID = '35846523'
 API_HASH = '65s1vrd68vs4r5v1e89dv4s6d4v5ef14b520tbf'
@@ -86,12 +87,48 @@ python main.py
 ```
 **运行成功后请勿关闭此窗口。**
 
+## Step 5. 后台运行
+
+**此步骤为 Linux 系统专用， Windows 运行的请自行查找方式。**
+
+上一步骤运行成功后，键盘中敲击
+```
+Ctrl + C
+```
+
+退出运行后，复制粘贴此段：
+```
+cat <<'TEXT' > /etc/systemd/system/maitgbot.service
+[Unit]
+Description=MaiMai's Checker Telegram Bot
+After=network.target
+
+[Install]
+WantedBy=multi-user.target
+
+[Service]
+Type=simple
+WorkingDirectory=/root/maitgbot
+ExecStart=python3 main.py
+Restart=always
+TEXT
+```
+
+然后就可以使用以下指令控制在后台的程序
+```
+systemctl enable maitgbot
+```
 
 ## FAQ
 
 想要关闭电脑 / 程序但保持项目运行，可以吗？
 >建议请把项目运行于服务器上， Windows 或 Linux（Ubuntu/Debian/CentOS/AlmaLinux/Rocky Linux/等等等）皆可，然后长期运行。 <br> Linux 上建议搭配 screen 或 tmux 等类似的程序一起使用。
 
+提示 `ValueError: Invalid parse mode "HTML"` 该怎么办？
+>把 Pyrogram 的版本降级成 1.4.12 。（执行 `pip install pyrogram==1.4.12` ）
+
+有问题想询问？（仅限于 Telegram 版，如想询问 QQ 版请移步到原项目询问。）
+>加入 Telegram 群组询问吧 [@xiaopoqun](https://t.me/xiaopoqun)
 
 ## 说明
 

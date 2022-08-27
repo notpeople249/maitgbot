@@ -116,7 +116,10 @@ TEXT
 
 然后就可以使用以下指令控制在后台的程序
 ```
-systemctl enable maitgbot
+systemctl enable maitgbot  （开启开机自动启动）
+systemctl disable maitgbot （关闭开机自动启动）
+systemctl start maitgbot   （启动程序）
+systemctl stop maitgbot    （停止程序）
 ```
 
 ## FAQ

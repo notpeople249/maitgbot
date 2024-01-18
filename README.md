@@ -50,7 +50,9 @@ git clone https://github.com/notpeople249/maitgbot '下载保存的路径'
 ```
 
 **在运行代码之前，您需要从 [此链接](https://www.diving-fish.com/maibot/static.zip) 下载资源文件并解压到`src`文件夹中。
+
 在运行代码之前，您需要从 [此链接](https://www.diving-fish.com/maibot/static.zip) 下载资源文件并解压到`src`文件夹中。
+
 在运行代码之前，您需要从 [此链接](https://www.diving-fish.com/maibot/static.zip) 下载资源文件并解压到`src`文件夹中。**
 
 > 资源文件仅供学习交流使用，请自觉在下载 24 小时内删除资源文件。
@@ -69,12 +71,13 @@ python --version
 ```
 pip install -r requirements.txt
 ```
-安装依赖完成后，打开`.env`文件填写上一步骤中获取的 `Api ID` ， `Api Hash` 和 `Bot Token` 。（如果没有请查看回上一步骤获取）
+安装依赖完成后，打开`.env`文件填写上一步骤中获取的 `Api ID` ， `Api Hash` 和 `Bot Token` （如果没有请查看回上一步骤获取），以及 `Record_Channel_ID` (此为记录频道的id，可新建频道并把机器人添加为频道管理员。)
 例子（仅供参考，无法使用）：
 ```
 API_ID = '35846523'
 API_HASH = '65s1vrd68vs4r5v1e89dv4s6d4v5ef14b520tbf'
 BTOKEN = '123456789:D54FGA556RFG4AF-46WE5FVADS!4FG98'
+Record_Channel_ID = '-1005478811271'
 ```
 最后运行即可。（Linux 下把 `python` 更换为 `python3` ）
 ```
@@ -127,11 +130,11 @@ systemctl stop maitgbot    （停止程序）
 想要关闭电脑 / 程序但保持项目运行，可以吗？
 >建议请把项目运行于服务器上， Windows 或 Linux（Ubuntu/Debian/CentOS/AlmaLinux/Rocky Linux/等等等）皆可，然后长期运行。 <br> Linux 上建议搭配 screen 或 tmux 等类似的程序一起使用。
 
-提示 `ValueError: Invalid parse mode "HTML"` 该怎么办？
->把 Pyrogram 的版本降级成 1.4.12 。（执行 `pip install pyrogram==1.4.12` ）
+机器人对b40和b50指令无反应，如何解决？
+>目前发现问题为无法连接上舞萌DX查分器的api，貌似因为网页修改导致的异常。现观察为已修复。
 
 有问题想询问？（仅限于 Telegram 版，如想询问 QQ 版请移步到原项目询问。）
->加入 Telegram 群组询问吧 [@xiaopoqun](https://t.me/xiaopoqun)
+>可在 Telegram 群组 [@xiaopoqun](https://t.me/xiaopoqun) 说明，看见后会回复。(入群需要通过入群验证，失败需等待数分钟后重新入群完成验证。)
 
 ## 说明
 
@@ -141,6 +144,8 @@ systemctl stop maitgbot    （停止程序）
 --- | ---
 /help | 查看帮助文档
 /today_mai | 查看今天的舞萌运势
+/update | 查看机器人更新记录
+/author | 发现问题？请加入群向作者反馈
 ...maimai...什么 | 随机一首歌
 随个[dx/标准][绿黄红紫白]<难度> | 随机一首指定条件的乐曲
 查歌<乐曲标题的一部分> | 查询符合条件的乐曲
